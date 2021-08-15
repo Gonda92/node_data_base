@@ -6,7 +6,6 @@ const compression = require('compression');
 const cors = require('cors');
 const app = express();
 const { PORT } = process.env;
-//Erick
 
 //Routes
 const productRoutes = require('./routes/products');
