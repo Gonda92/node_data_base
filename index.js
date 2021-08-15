@@ -8,7 +8,7 @@ const app = express();
 const { PORT } = process.env;
 
 //Routes
-const productRoutes = require('./routes/products');
+const productRoutes = require('./routes/products.route');
 
 //Middlewares
 app.use(express.json())
