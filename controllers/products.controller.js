@@ -1,34 +1,35 @@
+const ProductModel = require("../models/products.model");
 
-
-const postProduct = (req, res) => {
-  
+const postProduct = async (req, res) => {
+  const productCreate = await ProductModel.create(
+    {
+      name: "Manzana",
+    },
+    {
+      fields: ["name"], //este es el campo que defini dentro del modelo
+    }
+  );
+  res.json('Creado');
 };
 
-const getProducts = (req, res) => {
- 
+const getProducts = async (req, res) => {
+  await ProductModel.findAll()  //busca todo los registros de la tabla  
+  res.json(products);
 };
 
-const getProductById = (req, res) => {
+const getProductById = (req, res) => {};
 
-};
+const patchProductById = (req, res) => {};
 
-const patchProductById = (req, res) => {
-
-};
-
-const deleteProductById = (req, res) => {
-  
-};
+const deleteProductById = (req, res) => {};
 
 module.exports = {
-    postProduct,
-    getProducts,
-    getProductById,
-    patchProductById,
-    deleteProductById
-}
-
-
+  postProduct,
+  getProducts,
+  getProductById,
+  patchProductById,
+  deleteProductById,
+};
 
 //otro getProductsById, con parametro name
 

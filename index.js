@@ -4,7 +4,9 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 const compression = require('compression');
 const cors = require('cors');
+const {sequelize} = require('./database/database');
 const app = express();
+
 const { PORT } = process.env;
 
 //Routes
@@ -19,7 +21,7 @@ app.use(cors(''));
 
 //Routes
 //este prefijo se va a poner en cada una de las rutas que se creen
-const prefix = "/api/v2";
+const prefix = "/api/v1";
 app.use(prefix,productRoutes);
 
 //metodo para responder: res.send
@@ -31,4 +33,8 @@ app.get('/', (req, res) => {
 const server = http.createServer(app);
 server.listen(PORT, () => {
     console.log(`El Servidor esta en el puerto ${PORT}`);
+    sequelize
+    .sync()
+    .then(() => console.log('Conectados a la base de datos'))
+    .catch((error) => console.log(error));
 });
