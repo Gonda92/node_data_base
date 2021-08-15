@@ -1,0 +1,3 @@
+#gitignore sirve para que ciertos elementos (archivos) de mi proyecto, no sean visible para los usuarios (en 2 palabras, ignorara las carpetas de abajo)
+.env
+/node_modules
